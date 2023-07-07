@@ -1,121 +1,16 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<title>Quiz</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-	<style>
-	.card {
-		max-width: 500px;
-        border: none;
-	}
-	
-	.card-column {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-    .btn {
-        color: white;
-        background-color: #253551;
-    }
-	</style>
-</head>
-
-<body>
-	<div class="container">
-
-		<!-- Question 1 Card -->
-		<div class="row">
-			<div class="card-column">
-				<div class="card-column">
-					<div class="card mb-3">
-						<div class="card-body">
-							<h5 class="card-title">What is your building's gross floor area?</h5>
-							<p class="card-text">The gross floor area is the total number of square feet measured between the exterior surfaces of the enclosing fixed walls of a building excluding parking. Gross floor area includes all supporting areas such as lobbies, restrooms, equipment storage areas, mechanical rooms, break rooms and elevator shafts.</p>
-							<div class="form-group">
-								<select id="buildingSize" type="number" class="form-select dropdown">
-									<option value="">Square Footage</option>
-									<option value="under20k">less than 20k square feet</option>
-									<option value="20kTo30k">20k - 30k square feet</option>
-									<option value="30kTo50k">30k - 50k square feet</option>
-									<option value="50kTo70k">50k - 70k square feet</option>
-									<option value="70kTo90k">70k - 90k square feet</option>
-									<option value="90kTo100k">90k - 100k square feet</option>
-									<option value="100kTo200k">100k - 200k square feet</option>
-									<option value="200kTo220k">200k - 220k square feet</option>
-									<option value="over220k">over 220k square feet</option>
-								</select>
-							</div> <a href="" target="_blank">Find out more info.</a> </div>
-					</div>
-					<!-- Question 1 Card End -->
-
-					<!-- Question 2 Card -->
-					<div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Where is your facility located?</h5>
-                            <div class="form-group">
-                                    <input type="radio" id="seattle" name="buildingLocation" value="seattle" class="form-check-input">
-                                    <label for="seattle" class="form-check-label">Within the City of Seattle</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" id="washington" name="buildingLocation" value="washington" class="form-check-input">
-                                    <label for="washington" class="form-check-label">Within Washington State, not in Seattle</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" id="native" name="buildingLocation" value="native" class="form-check-input">
-                                    <label for="native" class="form-check-label">On Federally recognized land of a Native nation</label>
-                                </div>
-                            </div>
-                            <a href="" target="_blank">Find out more info.</a>
-                        </div>
-                    </div>
-					<!-- Question 2 Card End -->
-
-					<!-- Question 3 Card -->
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Choose your facility type</h5>
-        <p class="card-text">For mixed-use buildings, select the category that represents more than 50% of your building's gross floor area.</p>
-        <div class="form-group">
-            <div class="form-check">
-                <input type="radio" id="commercial" name="facilityType" value="commercial" class="form-check-input">
-                <label for="commercial" class="form-check-label">Commercial</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="MFsingle" name="facilityType" value="MFsingle" class="form-check-input">
-                <label for="MFsingle" class="form-check-label">Multifamily residential, single owner</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="MFmultiple" name="facilityType" value="MFmultiple" class="form-check-input">
-                <label for="MFmultiple" class="form-check-label">Multifamily residential, condo building/multiple owner</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="industrial" name="facilityType" value="industrial" class="form-check-input">
-                <label for="industrial" class="form-check-label">Industrial (more than 50% of GFA falls under Factory Group F)</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" id="federal" name="facilityType" value="federal" class="form-check-input">
-                <label for="federal" class="form-check-label">Federally owned building (any type)</label>
-            </div>
-        </div>
-        <a href="" target="_blank">Find out more info.</a>
-    </div>
-</div>
-<!-- Question 3 Card End -->
-
-
-                    <button id="submitBtn" type="submit" class="btn">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-
-var messageTable = {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('.sqs-block-form');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the form from submitting
+    
+    var DD = document.querySelector('#select-5a4378c9-2aa9-4ff7-8698-0c0ed68b7ea2-field').value;
+    var R1 = form.querySelector('#radio-1a665528-fda9-421d-b23a-5d9de69d6e46').value;
+    var R2 = form.querySelector('#radio-ee1b5b24-8aed-47c4-9aff-820f3680df11').value;
+    
+    // Create a message table object
+    var messageTable = {
       'under20k-seattle-commercial': 'Message 1',
       'under20k-seattle-MFsingle': 'Message 2',
       'under20k-seattle-MFmultiple': 'Message 3',
@@ -260,27 +155,17 @@ var messageTable = {
       'over220k-native-industrial': 'Message 134',
       'over220k-native-federal': 'Message 135'
     };
-	
-		document.querySelector("#submitBtn").addEventListener("click", function(event) {
-  		event.preventDefault(); // Prevents the default form submission behavior
-
-  		var DD = document.querySelector('#buildingSize').value;
-		var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
-		var R2 = document.querySelector('input[name="facilityType"]:checked').value;
-
-		var combination = DD + '-' + R1 + '-' + R2;
+    
+    // Generate the combination key
+    var combination = DD + '-' + R1 + '-' + R2;
     
     // Retrieve the message from the message table using the combination key
-    	var message = messageTable[combination] || 'Default message';
+    var message = messageTable[combination] || 'Default message';
     
     // Show the alert with the corresponding message
-    	alert(message);
+    alert(message);
+    
+    // You can also choose to redirect the user to a different page based on the conditions using window.location.href = 'your-page-url';
+  });
 });
-
-
-
-	</script>
-
-</body>
-
-</html>
+</script>

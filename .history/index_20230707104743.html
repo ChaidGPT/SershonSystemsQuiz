@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+	<style>
+	.card {
+		max-width: 500px;
+        border: none;
+	}
+	
+	.card-column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+    .btn {
+        color: white;
+        background-color: #253551;
+    }
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<!-- Question 1 Card -->
+		<div class="row">
+			<div class="col">
+				<div class="card-column">
+					<div class="card mb-3"> <img src="card-image-1.jpg" class="card-img-top" alt="Card Image">
+						<div class="card-body">
+							<h5 class="card-title">What is your building's gross floor area?</h5>
+							<p class="card-text">The gross floor area is the total number of square feet measured between the exterior surfaces of the enclosing fixed walls of a building excluding parking. Gross floor area includes all supporting areas such as lobbies, restrooms, equipment storage areas, mechanical rooms, break rooms and elevator shafts.</p>
+							<div class="form-group">
+								<label for="buildingSize">Select building size:</label>
+								<select id="buildingSize" type="number" class="form-select dropdown">
+									<option value="">Square Footage</option>
+									<option value="under20k">less than 20k square feet</option>
+									<option value="20kTo30k">20k - 30k square feet</option>
+									<option value="30kTo50k">30k - 50k square feet</option>
+									<option value="50kTo70k">50k - 70k square feet</option>
+									<option value="70kTo90k">70k - 90k square feet</option>
+									<option value="90kTo100k">90k - 100k square feet</option>
+									<option value="100kTo200k">100k - 200k square feet</option>
+									<option value="200kTo220k">200k - 220k square feet</option>
+									<option value="over220k">over 220k square feet</option>
+								</select>
+							</div> <a href="" target="_blank">Find out more info.</a> </div>
+					</div>
+					<!-- Question 1 Card End -->
+
+					<!-- Question 2 Card -->
+					<div class="card mb-3"> <img src="card-image-2.jpg" class="card-img-top" alt="Card Image">
+						<div class="card-body">
+							<h5 class="card-title">Where is your facility located?</h5>
+							<p class="card-text">Question 2 explanation Question 2 explanation Question 2 explanation Question 2 explanation Question 2 explanation Question 2 explanation Question 2 explanation</p>
+							<div class="form-group">
+								<label for="buildingLocation">Select building Location:</label>
+								<select id="buildingLocation" type="number" class="form-select dropdown">
+									<option value="">Building Location</option>
+									<option value="seattle">Within the City of Seattle</option>
+									<option value="washington">Within Washington State, not in Seattle</option>
+									<option value="native">On Federally recognized land of a Native nation</option>
+								</select>
+							</div> <a href="" target="_blank">Find out more info.</a> </div>
+					</div>
+					<!-- Question 2 Card End -->
+
+					<!-- Question 3 Card -->
+					<div class="card mb-3">
+						<div class="card-body">
+							<h5 class="card-title">Choose your facility type</h5>
+							<p class="card-text">For mixed-use buildings, select the category that represents more than 50% of your building's gross floor area.</p>
+							<div class="form-group">
+								<label for="facilityType">Select building Location:</label>
+								<select id="facilityType" type="number" class="form-select dropdown">
+									<option value="">Facility Type</option>
+									<option value="commercial">Commercial</option>
+									<option value="MFsingle">Multifamily residential, single owner</option>
+									<option value="MFmultiple">Multifamily residential, condo building/multiple owner</option>
+									<option value="industrial">Industrial (more than 50% of GFA falls under Factory Group F)</option>
+									<option value="federal">Federally owned building (any type)</option>
+								</select>
+							</div> <a href="" target="_blank">Find out more info.</a> </div>
+					</div>
+					<!-- Question 3 Card End -->
+
+                    <button type="submit" class="btn">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+	// Add custom JavaScript here if needed
+	</script>
+
+</body>
+
+</html>
