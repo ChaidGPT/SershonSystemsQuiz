@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Quiz</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+	<style>
+	.card {
+		/* max-width: auto; */
+		min-width: 375;
+        border: none;
+	}
+	
+	.card-column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: auto;
+	}
+
+    .btn {
+        color: white;
+        background-color: #253551;
+    }
+
+	.card-body p {
+		font-size: 10;
+		color: gray;
+		line-height: 1.2;
+	}
+
+	.form-check-input[type="radio"] {
+        font-size: 10px;
+    }
+
+    .form-check-label {
+        font-size: 12px;
+    }
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<!-- Question 1 Card -->
+		<div class="card mb-3">
+			<div class="card-body">
+				<h5 class="card-title">What is your building's gross floor area?</h5>
+				<p class="card-text">The gross floor area is the total number of square feet measured between the exterior surfaces of the enclosing fixed walls of a building excluding parking. Gross floor area includes all supporting areas such as lobbies, restrooms, equipment storage areas, mechanical rooms, break rooms and elevator shafts.</p>
+				<div class="form-group">
+					<select id="buildingSize" type="number" class="form-select">
+						<option value="">Square Footage</option>
+						<option value="under20k">less than 20k square feet</option>
+						<option value="20kTo30k">20k - 30k square feet</option>
+						<option value="30kTo50k">30k - 50k square feet</option>
+						<option value="50kTo70k">50k - 70k square feet</option>
+						<option value="70kTo90k">70k - 90k square feet</option>
+						<option value="90kTo100k">90k - 100k square feet</option>
+						<option value="100kTo200k">100k - 200k square feet</option>
+						<option value="200kTo220k">200k - 220k square feet</option>
+						<option value="over220k">over 220k square feet</option>
+					</select>
+				</div>
+				<a href="" target="_blank">Find out more info.</a>
+			</div>
+		</div>
+		<!-- Question 1 Card End -->
+	
+		<!-- Question 2 Card -->
+		<div class="card mb-3">
+			<div class="card-body">
+				<h5 class="card-title">Where is your facility located?</h5>
+				<div class="form-group">
+					<input type="radio" id="seattle" name="buildingLocation" value="seattle" class="form-check-input">
+					<label for="seattle" class="form-check-label">Within the City of Seattle</label>
+				</div>
+				<div class="form-check">
+					<input type="radio" id="washington" name="buildingLocation" value="washington" class="form-check-input">
+					<label for="washington" class="form-check-label">Within Washington State, not in Seattle</label>
+				</div>
+				<div class="form-check">
+					<input type="radio" id="native" name="buildingLocation" value="native" class="form-check-input">
+					<label for="native" class="form-check-label">On Federally recognized land of a Native nation</label>
+				</div>
+				<a href="" target="_blank">Find out more info.</a>
+			</div>
+		</div>
+		<!-- Question 2 Card End -->
+	
+		<!-- Question 3 Card -->
+		<div class="card mb-3">
+			<div class="card-body">
+				<h5 class="card-title">Choose your facility type</h5>
+				<p class="card-text">For mixed-use buildings, select the category that represents more than 50% of your building's gross floor area.</p>
+				<div class="form-group">
+					<div class="form-check">
+						<input type="radio" id="commercial" name="facilityType" value="commercial" class="form-check-input">
+						<label for="commercial" class="form-check-label">Commercial</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" id="MFsingle" name="facilityType" value="MFsingle" class="form-check-input">
+						<label for="MFsingle" class="form-check-label">Multifamily residential, single owner</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" id="MFmultiple" name="facilityType" value="MFmultiple" class="form-check-input">
+						<label for="MFmultiple" class="form-check-label">Multifamily residential, condo building/multiple owner</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" id="industrial" name="facilityType" value="industrial" class="form-check-input">
+						<label for="industrial" class="form-check-label">Industrial (more than 50% of GFA falls under Factory Group F)</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" id="federal" name="facilityType" value="federal" class="form-check-input">
+						<label for="federal" class="form-check-label">Federally owned building (any type)</label>
+					</div>
+				</div>
+				<a href="" target="_blank">Find out more info.</a>
+			</div>
+		</div>
+		<!-- Question 3 Card End -->
+	
+		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+	</div>	
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+
+var messageTable = {
+      'under20k-seattle-commercial': 'Message 1',
+      'under20k-seattle-MFsingle': 'Message 2',
+      'under20k-seattle-MFmultiple': 'Message 3',
+      'under20k-seattle-industrial': 'Message 4',
+      'under20k-seattle-federal': 'Message 5',
+      'under20k-washington-commercial': 'Message 6',
+      'under20k-washington-MFsingle': 'Message 7',
+      'under20k-washington-MFmultiple': 'Message 8',
+      'under20k-washington-industrial': 'Message 9',
+      'under20k-washington-federal': 'Message 10',
+      'under20k-native-commercial': 'Message 11',
+      'under20k-native-MFsingle': 'Message 12',
+      'under20k-native-MFmultiple': 'Message 13',
+      'under20k-native-industrial': 'Message 14',
+      'under20k-native-federal': 'Message 15',
+
+      '20kTo30k-seattle-commercial': 'Message 16',
+      '20kTo30k-seattle-MFsingle': 'Message 17',
+      '20kTo30k-seattle-MFmultiple': 'Message 18',
+      '20kTo30k-seattle-industrial': 'Message 19',
+      '20kTo30k-seattle-federal': 'Message 20',
+      '20kTo30k-washington-commercial': 'Message 21',
+      '20kTo30k-washington-MFsingle': 'Message 22',
+      '20kTo30k-washington-MFmultiple': 'Message 23',
+      '20kTo30k-washington-industrial': 'Message 24',
+      '20kTo30k-washington-federal': 'Message 25',
+      '20kTo30k-native-commercial': 'Message 26',
+      '20kTo30k-native-MFsingle': 'Message 27',
+      '20kTo30k-native-MFmultiple': 'Message 28',
+      '20kTo30k-native-industrial': 'Message 29',
+      '20kTo30k-native-federal': 'Message 30',
+
+      '30kTo50k-seattle-commercial': 'Message 31',
+      '30kTo50k-seattle-MFsingle': 'Message 32',
+      '30kTo50k-seattle-MFmultiple': 'Message 33',
+      '30kTo50k-seattle-industrial': 'Message 34',
+      '30kTo50k-seattle-federal': 'Message 35',
+      '30kTo50k-washington-commercial': 'Message 36',
+      '30kTo50k-washington-MFsingle': 'Message 37',
+      '30kTo50k-washington-MFmultiple': 'Message 38',
+      '30kTo50k-washington-industrial': 'Message 39',
+      '30kTo50k-washington-federal': 'Message 40',
+      '30kTo50k-native-commercial': 'Message 41',
+      '30kTo50k-native-MFsingle': 'Message 42',
+      '30kTo50k-native-MFmultiple': 'Message 43',
+      '30kTo50k-native-industrial': 'Message 44',
+      '30kTo50k-native-federal': 'Message 45',
+
+      '50kTo70k-seattle-commercial': 'Message 46',
+      '50kTo70k-seattle-MFsingle': 'Message 47',
+      '50kTo70k-seattle-MFmultiple': 'Message 48',
+      '50kTo70k-seattle-industrial': 'Message 49',
+      '50kTo70k-seattle-federal': 'Message 50',
+      '50kTo70k-washington-commercial': 'Message 51',
+      '50kTo70k-washington-MFsingle': 'Message 52',
+      '50kTo70k-washington-MFmultiple': 'Message 53',
+      '50kTo70k-washington-industrial': 'Message 54',
+      '50kTo70k-washington-federal': 'Message 55',
+      '50kTo70k-native-commercial': 'Message 56',
+      '50kTo70k-native-MFsingle': 'Message 57',
+      '50kTo70k-native-MFmultiple': 'Message 58',
+      '50kTo70k-native-industrial': 'Message 59',
+      '50kTo70k-native-federal': 'Message 60',
+
+      '70kTo90k-seattle-commercial': 'Message 61',
+      '70kTo90k-seattle-MFsingle': 'Message 62',
+      '70kTo90k-seattle-MFmultiple': 'Message 63',
+      '70kTo90k-seattle-industrial': 'Message 64',
+      '70kTo90k-seattle-federal': 'Message 65',
+      '70kTo90k-washington-commercial': 'Message 66',
+      '70kTo90k-washington-MFsingle': 'Message 67',
+      '70kTo90k-washington-MFmultiple': 'Message 68',
+      '70kTo90k-washington-industrial': 'Message 69',
+      '70kTo90k-washington-federal': 'Message 70',
+      '70kTo90k-native-commercial': 'Message 71',
+      '70kTo90k-native-MFsingle': 'Message 72',
+      '70kTo90k-native-MFmultiple': 'Message 73',
+      '70kTo90k-native-industrial': 'Message 74',
+      '70kTo90k-native-federal': 'Message 75',
+
+      '90kTo100k-seattle-commercial': 'Message 76',
+      '90kTo100k-seattle-MFsingle': 'Message 77',
+      '90kTo100k-seattle-MFmultiple': 'Message 78',
+      '90kTo100k-seattle-industrial': 'Message 79',
+      '90kTo100k-seattle-federal': 'Message 80',
+      '90kTo100k-washington-commercial': 'Message 81',
+      '90kTo100k-washington-MFsingle': 'Message 82',
+      '90kTo100k-washington-MFmultiple': 'Message 83',
+      '90kTo100k-washington-industrial': 'Message 84',
+      '90kTo100k-washington-federal': 'Message 85',
+      '90kTo100k-native-commercial': 'Message 86',
+      '90kTo100k-native-MFsingle': 'Message 87',
+      '90kTo100k-native-MFmultiple': 'Message 88',
+      '90kTo100k-native-industrial': 'Message 89',
+      '90kTo100k-native-federal': 'Message 90',
+
+      '100kTo200k-seattle-commercial': 'Message 91',
+      '100kTo200k-seattle-MFsingle': 'Message 92',
+      '100kTo200k-seattle-MFmultiple': 'Message 93',
+      '100kTo200k-seattle-industrial': 'Message 94',
+      '100kTo200k-seattle-federal': 'Message 95',
+      '100kTo200k-washington-commercial': 'Message 96',
+      '100kTo200k-washington-MFsingle': 'Message 97',
+      '100kTo200k-washington-MFmultiple': 'Message 98',
+      '100kTo200k-washington-industrial': 'Message 99',
+      '100kTo200k-washington-federal': 'Message 100',
+      '100kTo200k-native-commercial': 'Message 101',
+      '100kTo200k-native-MFsingle': 'Message 102',
+      '100kTo200k-native-MFmultiple': 'Message 103',
+      '100kTo200k-native-industrial': 'Message 104',
+      '100kTo200k-native-federal': 'Message 105',
+
+      '200kTo220k-seattle-commercial': 'Message 106',
+      '200kTo220k-seattle-MFsingle': 'Message 107',
+      '200kTo220k-seattle-MFmultiple': 'Message 108',
+      '200kTo220k-seattle-industrial': 'Message 109',
+      '200kTo220k-seattle-federal': 'Message 110',
+      '200kTo220k-washington-commercial': 'Message 111',
+      '200kTo220k-washington-MFsingle': 'Message 112',
+      '200kTo220k-washington-MFmultiple': 'Message 113',
+      '200kTo220k-washington-industrial': 'Message 114',
+      '200kTo220k-washington-federal': 'Message 115',
+      '200kTo220k-native-commercial': 'Message 116',
+      '200kTo220k-native-MFsingle': 'Message 117',
+      '200kTo220k-native-MFmultiple': 'Message 118',
+      '200kTo220k-native-industrial': 'Message 119',
+      '200kTo220k-native-federal': 'Message 120',
+
+      'over220k-seattle-commercial': 'Message 121',
+      'over220k-seattle-MFsingle': 'Message 122',
+      'over220k-seattle-MFmultiple': 'Message 123',
+      'over220k-seattle-industrial': 'Message 124',
+      'over220k-seattle-federal': 'Message 125',
+      'over220k-washington-commercial': 'Message 126',
+      'over220k-washington-MFsingle': 'Message 127',
+      'over220k-washington-MFmultiple': 'Message 128',
+      'over220k-washington-industrial': 'Message 129',
+      'over220k-washington-federal': 'Message 130',
+      'over220k-native-commercial': 'Message 131',
+      'over220k-native-MFsingle': 'Message 132',
+      'over220k-native-MFmultiple': 'Message 133',
+      'over220k-native-industrial': 'Message 134',
+      'over220k-native-federal': 'Message 135'
+    };
+
+		document.querySelector("#submitBtn").addEventListener("click", function(event) {
+  		event.preventDefault(); // Prevents the default form submission behavior
+
+  		var DD = document.querySelector('#buildingSize').value;
+		var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
+		var R2 = document.querySelector('input[name="facilityType"]:checked').value;
+
+		var combination = DD + '-' + R1 + '-' + R2;
+    
+    // Retrieve the message from the message table using the combination key
+    	var message = messageTable[combination] || 'Default message';
+    
+    // Show the alert with the corresponding message
+    	alert(message);
+});
+
+
+
+	</script>
+
+</body>
+
+</html>
