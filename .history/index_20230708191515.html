@@ -46,10 +46,6 @@
 .info-link {
     color: blue;
 }
-
-#resultMessage {
-  text-align: justify;
-}
 	</style>
 </head>
 
@@ -95,7 +91,7 @@
 					<input type="radio" id="native" name="buildingLocation" value="native" class="form-check-input">
 					<label for="native" class="form-check-label">On Federally recognized land of a Native nation</label>
 				</div>
-				<a href="" target="_blank" class="info-link">Find out more info.</a>
+				<a href="" target="_blank">Find out more info.</a>
 			</div>
 		</div>
 		<!-- Question 2 Card End -->
@@ -127,7 +123,7 @@
 						<label for="federal" class="form-check-label">Federally owned building (any type)</label>
 					</div>
 				</div>
-				<a href="" target="_blank" class="info-link">Find out more info.</a>
+				<a href="" target="_blank">Find out more info.</a>
 			</div>
 		</div>
 		<!-- Question 3 Card End -->
@@ -274,21 +270,15 @@ var messageTable = {
       '200kTo220k-native-federal': '9',
 
       'over220k-seattle-commercial': '<b>Seattle Energy Benchmarking</b><br>\
-    <ul>\
-      <li>Oct 1st, 2023, then annually on June 1st</li>\
-    </ul>\
+    &bull; Oct 1st, 2023, then annually on June 1st<br>\
     <b>WA Clean Buildings Performance Standard</b><br>\
-    <ul>\
-      <li>June 1st, 2024: last date to start 24-month data collection window</li>\
-      <li>June 1st, 2025: energy management plan must be implemented</li>\
-      <li>June 1st, 2026 compliance deadline, and every 5 years thereafter</li>\
-    </ul>\
+    &bull; June 1st, 2024: last date to start 24-month data collection window<br>\
+    &bull; June 1st, 2025: energy management plan must be implemented<br>\
+    &bull; June 1st, 2026 compliance deadline, and every 5 years thereafter<br>\
     <b>Seattle Building Emissions Performance Standard</b><br>\
-    <ul>\
-      <li>Oct 1st, 2027: reporting deadline</li>\
-      <li>Oct 1st, 2031: compliance deadline</li>\
-      <li>Every 5 years, achieving net zero emissions Oct 1st, 2041</li>\
-    </ul>',
+    &bull; Oct 1st, 2027: reporting deadline<br>\
+    &bull; Oct 1st, 2031: compliance deadline<br>\
+    &bull; Every 5 years, achieving net zero emissions Oct 1st, 2041',
       'over220k-seattle-MFsingle': '10',
       'over220k-seattle-MFmultiple': '5',
       'over220k-seattle-industrial': '9',
@@ -328,7 +318,7 @@ var messageTable = {
   // Display the result container with fade animation
   var resultContainer = document.getElementById('resultContainer');
   resultContainer.style.display = 'flex';
-  document.getElementById('resultMessage').innerHTML = message;
+  document.getElementById('resultMessage').innerText = message;
   resultContainer.classList.add('show');
 });
 

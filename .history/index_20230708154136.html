@@ -42,19 +42,11 @@
   display: flex;
   align-items: center;
 }
-
-.info-link {
-    color: blue;
-}
-
-#resultMessage {
-  text-align: justify;
-}
 	</style>
 </head>
 
 <body>
-	<div id="quizContainer" class="container">
+	<div class="container">
 		<!-- Question 1 Card -->
 		<div class="card mb-1 mt-1">
 			<div class="card-body">
@@ -74,10 +66,11 @@
 						<option value="over220k">over 220k square feet</option>
 					</select>
 				</div>
-				<a href="" target="_blank" class="info-link">Find out more info.</a>
+				<a href="" target="_blank">Find out more info.</a>
 			</div>
 		</div>
 		<!-- Question 1 Card End -->
+		<br>
 		<br>
 		<!-- Question 2 Card -->
 		<div class="card mb-1">
@@ -95,10 +88,11 @@
 					<input type="radio" id="native" name="buildingLocation" value="native" class="form-check-input">
 					<label for="native" class="form-check-label">On Federally recognized land of a Native nation</label>
 				</div>
-				<a href="" target="_blank" class="info-link">Find out more info.</a>
+				<a href="" target="_blank">Find out more info.</a>
 			</div>
 		</div>
 		<!-- Question 2 Card End -->
+		<br>
 		<br>
 		<!-- Question 3 Card -->
 		<div class="card mb-1">
@@ -127,19 +121,14 @@
 						<label for="federal" class="form-check-label">Federally owned building (any type)</label>
 					</div>
 				</div>
-				<a href="" target="_blank" class="info-link">Find out more info.</a>
+				<a href="" target="_blank">Find out more info.</a>
 			</div>
 		</div>
 		<!-- Question 3 Card End -->
-		<br>
+	
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
 	</div>	
 	
-	<div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="height: 100vh; display: none;">
-		<div class="text-center">
-		  <p id="resultMessage"></p>
-		</div>
-	  </div>					  
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
@@ -273,22 +262,7 @@ var messageTable = {
       '200kTo220k-native-industrial': '9',
       '200kTo220k-native-federal': '9',
 
-      'over220k-seattle-commercial': '<b>Seattle Energy Benchmarking</b><br>\
-    <ul>\
-      <li>Oct 1st, 2023, then annually on June 1st</li>\
-    </ul>\
-    <b>WA Clean Buildings Performance Standard</b><br>\
-    <ul>\
-      <li>June 1st, 2024: last date to start 24-month data collection window</li>\
-      <li>June 1st, 2025: energy management plan must be implemented</li>\
-      <li>June 1st, 2026 compliance deadline, and every 5 years thereafter</li>\
-    </ul>\
-    <b>Seattle Building Emissions Performance Standard</b><br>\
-    <ul>\
-      <li>Oct 1st, 2027: reporting deadline</li>\
-      <li>Oct 1st, 2031: compliance deadline</li>\
-      <li>Every 5 years, achieving net zero emissions Oct 1st, 2041</li>\
-    </ul>',
+      'over220k-seattle-commercial': '1',
       'over220k-seattle-MFsingle': '10',
       'over220k-seattle-MFmultiple': '5',
       'over220k-seattle-industrial': '9',
@@ -305,32 +279,23 @@ var messageTable = {
       'over220k-native-federal': '9'
     };
 
-	document.querySelector("#submitBtn").addEventListener("click", function(event) {
-  event.preventDefault();
+		document.querySelector("#submitBtn").addEventListener("click", function(event) {
+  		event.preventDefault(); // Prevents the default form submission behavior
 
-  var DD = document.querySelector('#buildingSize').value;
-  var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
-  var R2 = document.querySelector('input[name="facilityType"]:checked').value;
+  		var DD = document.querySelector('#buildingSize').value;
+		var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
+		var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
-  var combination = DD + '-' + R1 + '-' + R2;
-
-  // Retrieve the message from the message table using the combination key
-  var message = messageTable[combination] || 'Default message';
-
-  // Hide the quiz container with fade animation
-  var quizContainer = document.getElementById('quizContainer');
-  quizContainer.classList.add('fade');
-  setTimeout(function() {
-    quizContainer.style.display = 'none';
-    quizContainer.classList.remove('fade');
-  }, 500); // Adjust the delay (in milliseconds) to match the animation duration
-
-  // Display the result container with fade animation
-  var resultContainer = document.getElementById('resultContainer');
-  resultContainer.style.display = 'flex';
-  document.getElementById('resultMessage').innerHTML = message;
-  resultContainer.classList.add('show');
+		var combination = DD + '-' + R1 + '-' + R2;
+    
+    // Retrieve the message from the message table using the combination key
+    	var message = messageTable[combination] || 'Default message';
+    
+    // Show the alert with the corresponding message
+    	alert(message);
 });
+
+
 
 	</script>
 
