@@ -229,7 +229,7 @@ var messageTable = {
   // Check to see if the user chose a square footage
   if (DD === '') {
     alert("Please select a square footage option.");
-    return;
+    return
   }
 
   var combination = DD + '-' + R1 + '-' + R2;
@@ -256,27 +256,6 @@ var messageTable = {
   document.getElementById('resultMessage').innerHTML = message;
   resultContainer.classList.add('show');
 });
-
-document.querySelector("#goBackBtn").addEventListener("click", function(event) {
-  event.preventDefault();
-
-  // Show the quiz container
-  var quizContainer = document.getElementById('quizContainer');
-  quizContainer.style.display = 'block';
-  quizContainer.classList.add('show');
-
-  // Hide the result container
-  var resultContainer = document.getElementById('resultContainer');
-  resultContainer.style.display = 'none';
-
-  // Reset form values
-  document.querySelector('#buildingSize').value = '';
-  var radioInputs = document.querySelectorAll('input[type="radio"]');
-  radioInputs.forEach(function(input) {
-    input.checked = false;
-  });
-});
-
 </script>
 
 </body>

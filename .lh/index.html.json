@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 128,
+            "activePatchIndex": 130,
             "patches": [
                 {
                     "date": 1688595605049,
@@ -520,6 +520,14 @@
                 {
                     "date": 1689006949240,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -134,14 +134,13 @@\n \t\t<br>\r\n \t\t<button id=\"submitBtn\" type=\"submit\" class=\"btn btn-primary\">Submit</button>\r\n \t</div>\t\r\n \t\r\n-\t<div id=\"resultContainer\" class=\"container d-flex align-items-center justify-content-center\" style=\"height: 100vh; display: none;\">\r\n-    <div class=\"text-center\">\r\n-      <p id=\"resultMessage\" class=\"fade\"></p>\r\n-      <button id=\"goBackBtn\" type=\"submit\" class=\"btn btn-primary\">Go back</button>\r\n-    </div>\r\n-  </div>            \r\n+\t<div id=\"resultContainer\" class=\"container d-flex align-items-center justify-content-center fade\" style=\"height: 100vh; display: none;\">\r\n+\t\t<div class=\"text-center\">\r\n+\t\t  <p id=\"resultMessage\"></p>\r\n+\t\t</div>\r\n+\t  </div>\t\t\t\t\t  \r\n \r\n \t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"></script>\r\n \t<script>\r\n \r\n"
+                },
+                {
+                    "date": 1689007284344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -134,13 +134,14 @@\n \t\t<br>\r\n \t\t<button id=\"submitBtn\" type=\"submit\" class=\"btn btn-primary\">Submit</button>\r\n \t</div>\t\r\n \t\r\n-\t<div id=\"resultContainer\" class=\"container d-flex align-items-center justify-content-center fade\" style=\"height: 100vh; display: none;\">\r\n-\t\t<div class=\"text-center\">\r\n-\t\t  <p id=\"resultMessage\"></p>\r\n-\t\t</div>\r\n-\t  </div>\t\t\t\t\t  \r\n+  <div id=\"resultContainer\" class=\"container d-flex align-items-center justify-content-center fade\" style=\"height: 100vh; display: none;\">\r\n+    <div class=\"text-center\">\r\n+      <p id=\"resultMessage\"></p>\r\n+      <button id=\"goBackBtn\" type=\"button\" class=\"btn btn-primary\">Go back</button>\r\n+    </div>\r\n+  </div>              \r\n \r\n \t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"></script>\r\n \t<script>\r\n \r\n"
+                },
+                {
+                    "date": 1689007312711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -228,9 +228,9 @@\n \r\n   // Check to see if the user chose a square footage\r\n   if (DD === '') {\r\n     alert(\"Please select a square footage option.\");\r\n-    return\r\n+    return;\r\n   }\r\n \r\n   var combination = DD + '-' + R1 + '-' + R2;\r\n \r\n@@ -255,8 +255,29 @@\n   resultContainer.style.display = 'flex';\r\n   document.getElementById('resultMessage').innerHTML = message;\r\n   resultContainer.classList.add('show');\r\n });\r\n+\r\n+document.querySelector(\"#goBackBtn\").addEventListener(\"click\", function(event) {\r\n+  event.preventDefault();\r\n+\r\n+  // Show the quiz container\r\n+  var quizContainer = document.getElementById('quizContainer');\r\n+  quizContainer.style.display = 'block';\r\n+  quizContainer.classList.add('show');\r\n+\r\n+  // Hide the result container\r\n+  var resultContainer = document.getElementById('resultContainer');\r\n+  resultContainer.style.display = 'none';\r\n+\r\n+  // Reset form values\r\n+  document.querySelector('#buildingSize').value = '';\r\n+  var radioInputs = document.querySelectorAll('input[type=\"radio\"]');\r\n+  radioInputs.forEach(function(input) {\r\n+    input.checked = false;\r\n+  });\r\n+});\r\n+\r\n </script>\r\n \r\n </body>\r\n \r\n"
                 }
             ],
             "date": 1688595605049,
