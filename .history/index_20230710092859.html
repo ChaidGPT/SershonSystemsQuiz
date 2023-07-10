@@ -135,11 +135,12 @@
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
 	</div>	
 	
-	<div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="height: 100vh; display: none;">
-		<div class="text-center">
-		  <p id="resultMessage"></p>
-		</div>
-	  </div>					  
+	<div id="resultContainer" class="container d-flex align-items-center justify-content-center" style="height: 100vh; display: none;">
+    <div class="text-center">
+      <p id="resultMessage" class="fade"></p>
+      <button id="goBackBtn" type="submit" class="btn btn-primary">Go back</button>
+    </div>
+  </div>            
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
@@ -218,27 +219,49 @@ var messageTable = {
       'over220k-washington-MFmultiple': '9',
     };
 
-    document.querySelector("#submitBtn").addEventListener("click", function(event) {
+    document.querySelector("#goBackBtn").addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  // Show the quiz container
+  var quizContainer = document.getElementById('quizContainer');
+  quizContainer.style.display = 'block';
+  quizContainer.classList.add('show');
+  
+  // Hide the result container
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.style.display = 'none';
+  
+  // Reset form values
+  document.querySelector('#buildingSize').value = '';
+  var radioInputs = document.querySelectorAll('input[type="radio"]');
+  radioInputs.forEach(function(input) {
+    input.checked = false;
+  });
+});
+
+  document.querySelector("#submitBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
   var DD = document.querySelector('#buildingSize').value;
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
-  // Check to see if the user chose a square footage
   if (DD === '') {
+    // Display an error message or perform necessary validation actions
     alert("Please select a square footage option.");
-    return
+    return;
   }
 
   var combination = DD + '-' + R1 + '-' + R2;
 
   // Check if the combination contains specific values
-  if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
-    var message = 'Bulk Answer 9';
+  if (R1 === 'native' || R1 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
+    var message = 'Specific result message for the combination';
+    message += '<br><button id="goBackBtn" type="submit" class="btn btn-primary">Go back</button>';
   } else {
     // Retrieve the message from the message table using the combination key
     var message = messageTable[combination] || 'Default message';
+    message += '<br><button id="goBackBtn" type="submit" class="btn btn-primary">Go back</button>';
   }
 
   // Hide the quiz container with fade animation
@@ -255,6 +278,8 @@ var messageTable = {
   document.getElementById('resultMessage').innerHTML = message;
   resultContainer.classList.add('show');
 });
+
+
 </script>
 
 </body>

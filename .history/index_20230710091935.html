@@ -225,12 +225,6 @@ var messageTable = {
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
-  // Check to see if the user chose a square footage
-  if (DD === '') {
-    alert("Please select a square footage option.");
-    return
-  }
-
   var combination = DD + '-' + R1 + '-' + R2;
 
   // Check if the combination contains specific values

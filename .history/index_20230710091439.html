@@ -145,55 +145,93 @@
 	<script>
 
 var messageTable = {
+      'under20k-seattle-commercial': '9',
+      'under20k-seattle-MFsingle': '9',
+      'under20k-seattle-MFmultiple': '9',
+      'under20k-seattle-industrial': '9',
+      'under20k-seattle-federal': '9',
+      'under20k-washington-commercial': '9',
+      'under20k-washington-MFsingle': '9',
+      'under20k-washington-MFmultiple': '9',
+      'under20k-washington-industrial': '9',
+      'under20k-washington-federal': '9',
 
       '20kTo30k-seattle-commercial': '8',
       '20kTo30k-seattle-MFsingle': '14',
       '20kTo30k-seattle-MFmultiple': '19',
+      '20kTo30k-seattle-industrial': '9',
+      '20kTo30k-seattle-federal': '9',
       '20kTo30k-washington-commercial': '23',
       '20kTo30k-washington-MFsingle': '23',
       '20kTo30k-washington-MFmultiple': '9',
+      '20kTo30k-washington-industrial': '9',
+      '20kTo30k-washington-federal': '9',
 
       '30kTo50k-seattle-commercial': '7',
       '30kTo50k-seattle-MFsingle': '13',
       '30kTo50k-seattle-MFmultiple': '18',
+      '30kTo50k-seattle-industrial': '9',
+      '30kTo50k-seattle-federal': '9',
       '30kTo50k-washington-commercial': '23',
       '30kTo50k-washington-MFsingle': '23',
       '30kTo50k-washington-MFmultiple': '9',
+      '30kTo50k-washington-industrial': '9',
+      '30kTo50k-washington-federal': '9',
 
       '50kTo70k-seattle-commercial': '6',
       '50kTo70k-seattle-MFsingle': '12',
       '50kTo70k-seattle-MFmultiple': '17',
+      '50kTo70k-seattle-industrial': '9',
+      '50kTo70k-seattle-federal': '9',
       '50kTo70k-washington-commercial': '22',
       '50kTo70k-washington-MFsingle': '23',
       '50kTo70k-washington-MFmultiple': '9',
+      '50kTo70k-washington-industrial': '9',
+      '50kTo70k-washington-federal': '9',
 
       '70kTo90k-seattle-commercial': '5',
       '70kTo90k-seattle-MFsingle': '12',
       '70kTo90k-seattle-MFmultiple': '17',
+      '70kTo90k-seattle-industrial': '9',
+      '70kTo90k-seattle-federal': '9',
       '70kTo90k-washington-commercial': '22',
       '70kTo90k-washington-MFsingle': '23',
       '70kTo90k-washington-MFmultiple': '9',
+      '70kTo90k-washington-industrial': '9',
+      '70kTo90k-washington-federal': '9',
 
       '90kTo100k-seattle-commercial': '4',
       '90kTo100k-seattle-MFsingle': '11',
       '90kTo100k-seattle-MFmultiple': '16',
+      '90kTo100k-seattle-industrial': '9',
+      '90kTo100k-seattle-federal': '9',
       '90kTo100k-washington-commercial': '21',
       '90kTo100k-washington-MFsingle': '23',
       '90kTo100k-washington-MFmultiple': '9',
+      '90kTo100k-washington-industrial': '9',
+      '90kTo100k-washington-federal': '9',
 
       '100kTo200k-seattle-commercial': '3',
       '100kTo200k-seattle-MFsingle': '11',
       '100kTo200k-seattle-MFmultiple': '16',
+      '100kTo200k-seattle-industrial': '9',
+      '100kTo200k-seattle-federal': '9',
       '100kTo200k-washington-commercial': '21',
       '100kTo200k-washington-MFsingle': '23',
       '100kTo200k-washington-MFmultiple': '9',
+      '100kTo200k-washington-industrial': '9',
+      '100kTo200k-washington-federal': '9',
 
       '200kTo220k-seattle-commercial': '2',
       '200kTo220k-seattle-MFsingle': '11',
       '200kTo220k-seattle-MFmultiple': '16',
+      '200kTo220k-seattle-industrial': '9',
+      '200kTo220k-seattle-federal': '9',
       '200kTo220k-washington-commercial': '21',
       '200kTo220k-washington-MFsingle': '23',
       '200kTo220k-washington-MFmultiple': '9',
+      '200kTo220k-washington-industrial': '9',
+      '200kTo220k-washington-federal': '9',
 
       'over220k-seattle-commercial': '<b>Seattle Energy Benchmarking</b><br>\
     <ul>\
@@ -213,9 +251,18 @@ var messageTable = {
     </ul>',
       'over220k-seattle-MFsingle': '10',
       'over220k-seattle-MFmultiple': '5',
+      'over220k-seattle-industrial': '9',
+      'over220k-seattle-federal': '9',
       'over220k-washington-commercial': '20',
       'over220k-washington-MFsingle': '23',
       'over220k-washington-MFmultiple': '9',
+      'over220k-washington-industrial': '9',
+      'over220k-washington-federal': '9',
+      'over220k-native-commercial': '9',
+      'over220k-native-MFsingle': '9',
+      'over220k-native-MFmultiple': '9',
+      'over220k-native-industrial': '9',
+      'over220k-native-federal': '9'
     };
 
     document.querySelector("#submitBtn").addEventListener("click", function(event) {
@@ -225,16 +272,10 @@ var messageTable = {
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
-  // Check to see if the user chose a square footage
-  if (DD === '') {
-    alert("Please select a square footage option.");
-    return
-  }
-
   var combination = DD + '-' + R1 + '-' + R2;
 
   // Check if the combination contains specific values
-  if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
+  if (R1 === 'native' || R1 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
     var message = 'Bulk Answer 9';
   } else {
     // Retrieve the message from the message table using the combination key

@@ -225,16 +225,10 @@ var messageTable = {
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
-  // Check to see if the user chose a square footage
-  if (DD === '') {
-    alert("Please select a square footage option.");
-    return
-  }
-
   var combination = DD + '-' + R1 + '-' + R2;
 
   // Check if the combination contains specific values
-  if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
+  if (R1 === 'native' || R1 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
     var message = 'Bulk Answer 9';
   } else {
     // Retrieve the message from the message table using the combination key
