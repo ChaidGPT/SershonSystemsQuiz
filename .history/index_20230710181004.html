@@ -49,7 +49,6 @@
 
 #resultMessage {
   text-align: justify;
-  font-size: 12px;
 }
 	</style>
 </head>
@@ -237,14 +236,14 @@ var messageTable = {
 
   // Check if the combination contains specific values
   if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
-    var message = '<h3>Exempt</h3> <b>Based on the answers provided, your facility is not subject to the following regulations:</b><br>' +
+    var message = 'Based on the answers provided, your facility is not subject to the following regulations:<br>' +
                 'Seattle Energy Benchmarking, Seattle Building Tune-Ups, WA Clean Buildings Performance Standard, or Seattle Building Emissions Performance Standard<br>' +
                 'To learn more, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com.<br><br>' +
                 '<b>Possible Reasons for Exemption:</b><br>' +
                 '&#8226; Federal ownership<br>' +
                 '&#8226; Industrial facility<br>' +
                 '&#8226; Located within a Native nation<br>' +
-                '&#8226; Facilities less than 20,000 square feet<br><br>' +
+                '&#8226; Facilities less than 20,000 square feet<br>' +
                 '<b>You may be required to apply for exemption and provide supporting documentation.</b><br>' +
                 '• Contact Sershon Systems to discuss specific exemption application deadlines.';
   } else {
