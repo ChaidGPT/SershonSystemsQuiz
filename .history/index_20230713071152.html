@@ -47,10 +47,6 @@
     color: blue;
 }
 
-#resultContainer {
-  overflow-y: auto;
-}
-
 #resultMessage {
   text-align: justify;
   font-size: 12px;
@@ -140,17 +136,15 @@
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
 	</div>	
 	
-  <div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="display: none;">
+  <div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="height: 100vh; display: none;">
     <div class="text-center">
       <p id="resultMessage"></p>
       <button id="goBackBtn" type="button" class="btn btn-primary">Go back</button>
     </div>
-  </div>                   
+  </div>              
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
-
-    // Info Snippets
     var fullEXEMPT = '<h3>Exempt</h3> <b>Based on the answers provided, your facility is not subject to the following regulations:</b><br>' +
                 'Seattle Energy Benchmarking, Seattle Building Tune-Ups, WA Clean Buildings Performance Standard, or Seattle Building Emissions Performance Standard<br>' +
                 'To learn more, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com.<br><br>' +
@@ -259,112 +253,66 @@
                           '<li>June 1st, 2026: energy management plan must be implemented</li>' +
                           '<li>June 1st, 2027: compliance deadline, and every 5 years thereafter</li>' +
                         '</ul>';
-    var sbepsOct1st2732 = '<b>Seattle Clean Buildings Performance Standard</b>' +
-                        '<ul>' +
-                          '<li>June 1st, 2025: last date to start 24-month data collection window' +
-                          '<li>Oct 1st, 2027: reporting deadline</li>' +
-                          '<li>Oct 1st, 2032: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2047</li>' +
-                        '</ul>';   
-    // End Info Snippets 
-
     var messageTable = {
 
-      // Answer 1
-      'over220k-seattle-commercial': 'Answer 1<br>' + answerBegin + sebOct1st23 + setuOct1st23 + cbpsJun1sr23 + sbepsOct1st24,
+      '20kTo30k-seattle-commercial': '8' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st30,
+      '20kTo30k-seattle-MFsingle': '14' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st20,
+      '20kTo30k-seattle-MFmultiple': '19' + answerBegin + sebOct1st23 + sbepsOct1st20,
+      '20kTo30k-washington-commercial': '23' + answerBegin + cbpsJuly1st26,
+      '20kTo30k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '20kTo30k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 2
-      '200kTo220k-seattle-commercial': 'Answer 2<br>' + answerBegin + sebOct1st23 + setuOct1st23 + cbpsJune1st25 + sbepsOct1st27,
+      '30kTo50k-seattle-commercial': '7' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st29,
+      '30kTo50k-seattle-MFsingle': '13' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2949,
+      '30kTo50k-seattle-MFmultiple': '18' + answerBegin + sebOct1st23 + sbepsOct1st2949,
+      '30kTo50k-washington-commercial': '23' + answerBegin,
+      '30kTo50k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '30kTo50k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 3
-      '100kTo200k-seattle-commercial': 'Answer 3<br>' + answerBegin + sebOct1st23 + cbpsJune1st25  + sbepsOct1st27 + sbtuOct1st24,
+      '50kTo70k-seattle-commercial': '6' + answerBegin + sebOct1st23 + cbpsJune1st26 + sbepsOct1st28 + sbtuOct1st26,
+      '50kTo70k-seattle-MFsingle': '12' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2833,
+      '50kTo70k-seattle-MFmultiple': '17' + answerBegin + sebOct1st23 + sbepsOct1st2833,
+      '50kTo70k-washington-commercial': '22' + answerBegin + cbpsJune1st26,
+      '50kTo70k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '50kTo70k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 4
-      '90kTo100k-seattle-commercial': 'Answer 4<br>' + answerBegin + sebOct1st23 + cbpsJune1st25 + sbepsOct1st27,
+      '70kTo90k-seattle-commercial': '5' + answerBegin + sbtuOct1st25 + cbpsJune1st26 + sbepsOct1st28,
+      '70kTo90k-seattle-MFsingle': '12' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2833,
+      '70kTo90k-seattle-MFmultiple': '17' + answerBegin + sebOct1st23 + sbepsOct1st2833,
+      '70kTo90k-washington-commercial': '22' + answerBegin + cbpsJune1st26,
+      '70kTo90k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '70kTo90k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 5
-      '70kTo90k-seattle-commercial': 'Answer 5<br>' + answerBegin + sbtuOct1st25 + cbpsJune1st26 + sbepsOct1st28,
+      '90kTo100k-seattle-commercial': '4' + answerBegin + sebOct1st23 + cbpsJune1st25 + sbepsOct1st27,
+      '90kTo100k-seattle-MFsingle': '11' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
+      '90kTo100k-seattle-MFmultiple': '16' + answerBegin + sebOct1st23 + sbepsOct1st2732,
+      '90kTo100k-washington-commercial': '21' + answerBegin + cbpsJune1st2527,
+      '90kTo100k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '90kTo100k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 6
-      '50kTo70k-seattle-commercial': 'Answer 6<br>' + answerBegin + sebOct1st23 + cbpsJune1st26 + sbepsOct1st28 + sbtuOct1st26,
+      '100kTo200k-seattle-commercial': '3' + answerBegin + sebOct1st23 + cbpsJune1st25  + sbepsOct1st27 + sbtuOct1st24,
+      '100kTo200k-seattle-MFsingle': '11' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
+      '100kTo200k-seattle-MFmultiple': '16' + answerBegin + sebOct1st23 + sbepsOct1st2732,
+      '100kTo200k-washington-commercial': '21' + answerBegin + cbpsJune1st2527,
+      '100kTo200k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '100kTo200k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 7
-      '30kTo50k-seattle-commercial': 'Answer 7<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st29,
+      '200kTo220k-seattle-commercial': '2' + answerBegin + sebOct1st23 + setuOct1st23 + cbpsJune1st25 + sbepsOct1st27,
+      '200kTo220k-seattle-MFsingle': '11' + answerBegin + sebOct1st23 + sbepsOct1st2732,
+      '200kTo220k-seattle-MFmultiple': '16' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
+      '200kTo220k-washington-commercial': '21' + answerBegin + cbpsJune1st2527,
+      '200kTo220k-washington-MFsingle': '23' + answerBegin + cbpsJuly1st26,
+      '200kTo220k-washington-MFmultiple': '9' + fullEXEMPT,
 
-      // Answer 8
-      '20kTo30k-seattle-commercial': 'Answer 8<br> ' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st30,
-
-      // Answer 9
-      '20kTo30k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '30kTo50k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '50kTo70k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '70kTo90k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '90kTo100k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '100kTo200k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      '200kTo220k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-      'over220k-washington-MFmultiple': 'Answer 9<br>' + fullEXEMPT,
-
-      // Answer 10
-      'over220k-seattle-MFsingle': 'Answer 10<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2731,
-
-      // Answer 11
-      '90kTo100k-seattle-MFsingle': 'Answer 11<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
-      '100kTo200k-seattle-MFsingle': 'Answer 11<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
-      '200kTo220k-seattle-MFsingle': 'Answer 11<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2732,
-
-      // Answer 12
-      '50kTo70k-seattle-MFsingle': 'Answer 12<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2833,
-      '70kTo90k-seattle-MFsingle': 'Answer 12<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2833,
-
-      // Answer 13
-      '30kTo50k-seattle-MFsingle': 'Answer 13<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2949,
-
-      // Answer 14
-      '20kTo30k-seattle-MFsingle': 'Answer 14<br>' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st20,
-
-      // Answer 15
-      'over220k-seattle-MFmultiple': 'Answer 15<br>' + answerBegin + sebOct1st23 + sbepsOct1st2731,
-
-      // Answer 16
-      '90kTo100k-seattle-MFmultiple': 'Answer 16<br>' + answerBegin + sebOct1st23 + sbepsOct1st2732,
-      '100kTo200k-seattle-MFmultiple': 'Answer 16<br>' + answerBegin + sebOct1st23 + sbepsOct1st2732,
-      '200kTo220k-seattle-MFmultiple': 'Answer 16<br>' + answerBegin + sebOct1st23 + sbepsOct1st2732,
-
-      // Answer 17
-      '50kTo70k-seattle-MFmultiple': 'Answer 17<br>' + answerBegin + sebOct1st23 + sbepsOct1st2833,
-      '70kTo90k-seattle-MFmultiple': 'Answer 17<br>' + answerBegin + sebOct1st23 + sbepsOct1st2833,
-
-      // Answer 18
-      '30kTo50k-seattle-MFmultiple': 'Answer 18' + answerBegin + sebOct1st23 + sbepsOct1st2949,
-
-      // Answer 19
-      '20kTo30k-seattle-MFmultiple': 'Answer 19<br>' + answerBegin + sebOct1st23 + sbepsOct1st20,
-
-      // Answer 20
-      'over220k-washington-commercial': 'Answer 20<br>' + answerBegin + cbpsJun1sr23,
-
-      // Answer 21
-      '90kTo100k-washington-commercial': 'Answer 21<br>' + answerBegin + cbpsJune1st2527,
-      '100kTo200k-washington-commercial': 'Answer 21<br>' + answerBegin + cbpsJune1st2527,
-      '200kTo220k-washington-commercial': 'Answer 21<br>' + answerBegin + cbpsJune1st2527,
-
-      // Answer 22
-      '50kTo70k-washington-commercial': 'Answer 22<br>' + answerBegin + cbpsJune1st26,
-      '70kTo90k-washington-commercial': 'Answer 22<br>' + answerBegin + cbpsJune1st26,
-
-      // Answer 23
-      '20kTo30k-washington-commercial': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '30kTo50k-washington-commercial': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '20kTo30k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '30kTo50k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '50kTo70k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '70kTo90k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '90kTo100k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '100kTo200k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      '200kTo220k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
-      'over220k-washington-MFsingle': 'Answer 23<br>' + answerBegin + cbpsJuly1st26,
+      'over220k-seattle-commercial': '1' + answerBegin + sebOct1st23 + setuOct1st23 + cbpsJun1sr23 + sbepsOct1st24,
+      'over220k-seattle-MFsingle': '10' + answerBegin + sebOct1st23 + cbpsJuly1st26 + sbepsOct1st2731,
+      'over220k-seattle-MFmultiple': '15' + answerBegin + sebOct1st23 + sbepsOct1st2731,
+      'over220k-washington-commercial': '20' + answerBegin + cbpsJun1sr23,
+      'over220k-washington-MFsingle': '23' + answerBegin,
+      'over220k-washington-MFmultiple': '9' + fullEXEMPT,
     };
 
-    document.querySelector("#submitBtn").addEventListener("click", function(event) {
+  document.querySelector("#submitBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
   var DD = document.querySelector('#buildingSize').value;
@@ -381,7 +329,7 @@
 
   // Check if the combination contains specific values
   if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
-    var message = fullEXEMPT;
+    var message = EXEMPT;
   } else {
     // Retrieve the message from the message table using the combination key
     var message = messageTable[combination] || 'Default message';
@@ -393,23 +341,33 @@
   setTimeout(function() {
     quizContainer.style.display = 'none';
     quizContainer.classList.remove('fade');
-
-    // Scroll to the top of the page
-    window.scrollTo({ top: 30, behavior: 'smooth' });
-
-    // Display the result container with fade animation
-    var resultContainer = document.getElementById('resultContainer');
-    resultContainer.style.display = 'flex';
-    document.getElementById('resultMessage').innerHTML = message;
-    resultContainer.classList.add('show');
   }, 1000); // Adjust the delay (in milliseconds) to match the animation duration
+
+  // Display the result container with fade animation
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.style.display = 'flex';
+  document.getElementById('resultMessage').innerHTML = message;
+  resultContainer.classList.add('show');
 });
 
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Refresh the page
-  location.reload();
+  // Show the quiz container
+  var quizContainer = document.getElementById('quizContainer');
+  quizContainer.style.display = 'block';
+  quizContainer.classList.add('show');
+
+  // Hide the result container
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.style.display = 'none';
+
+  // Reset form values
+  document.querySelector('#buildingSize').value = '';
+  var radioInputs = document.querySelectorAll('input[type="radio"]');
+  radioInputs.forEach(function(input) {
+    input.checked = false;
+  });
 });
 
 </script>

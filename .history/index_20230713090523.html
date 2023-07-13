@@ -140,12 +140,12 @@
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
 	</div>	
 	
-  <div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="display: none;">
+  <div id="resultContainer" class="container d-flex align-items-center justify-content-center fade" style="height: 100vh; display: none;">
     <div class="text-center">
       <p id="resultMessage"></p>
       <button id="goBackBtn" type="button" class="btn btn-primary">Go back</button>
     </div>
-  </div>                   
+  </div>              
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
@@ -393,24 +393,38 @@
   setTimeout(function() {
     quizContainer.style.display = 'none';
     quizContainer.classList.remove('fade');
-
-    // Scroll to the top of the page
-    window.scrollTo({ top: 30, behavior: 'smooth' });
-
-    // Display the result container with fade animation
-    var resultContainer = document.getElementById('resultContainer');
-    resultContainer.style.display = 'flex';
-    document.getElementById('resultMessage').innerHTML = message;
-    resultContainer.classList.add('show');
   }, 1000); // Adjust the delay (in milliseconds) to match the animation duration
+
+  // Display the result container with fade animation
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.style.display = 'flex';
+  document.getElementById('resultMessage').innerHTML = message;
+  resultContainer.classList.add('show');
+
+  // Scroll to the result message
+  resultContainer.scrollIntoView({ behavior: 'smooth' });
 });
 
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Refresh the page
-  location.reload();
+  // Show the quiz container
+  var quizContainer = document.getElementById('quizContainer');
+  quizContainer.style.display = 'block';
+  quizContainer.classList.add('show');
+
+  // Hide the result container
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.style.display = 'none';
+
+  // Reset form values
+  document.querySelector('#buildingSize').value = '';
+  var radioInputs = document.querySelectorAll('input[type="radio"]');
+  radioInputs.forEach(function(input) {
+    input.checked = false;
+  });
 });
+
 
 </script>
 

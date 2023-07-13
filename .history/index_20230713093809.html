@@ -394,23 +394,43 @@
     quizContainer.style.display = 'none';
     quizContainer.classList.remove('fade');
 
-    // Scroll to the top of the page
-    window.scrollTo({ top: 30, behavior: 'smooth' });
-
     // Display the result container with fade animation
     var resultContainer = document.getElementById('resultContainer');
     resultContainer.style.display = 'flex';
     document.getElementById('resultMessage').innerHTML = message;
     resultContainer.classList.add('show');
-  }, 1000); // Adjust the delay (in milliseconds) to match the animation duration
+  }, 500); // Adjust the delay (in milliseconds) to match the animation duration
 });
 
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Refresh the page
-  location.reload();
+  // Hide the result container with fade animation
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.classList.add('fade');
+  setTimeout(function() {
+    resultContainer.style.display = 'none';
+    resultContainer.classList.remove('fade');
+  }, 500); // Adjust the delay (in milliseconds) to match the animation duration
+
+  // Show the quiz container with fade animation
+  var quizContainer = document.getElementById('quizContainer');
+  quizContainer.style.display = 'flex';
+  quizContainer.classList.add('fade');
+  setTimeout(function() {
+    quizContainer.classList.remove('fade');
+  }, 500); // Adjust the delay (in milliseconds) to match the animation duration
+
+  // Reset form values
+  document.querySelector('#buildingSize').value = '';
+  var radioInputs = document.querySelectorAll('input[type="radio"]');
+  radioInputs.forEach(function(input) {
+    input.checked = false;
+  });
 });
+
+
+
 
 </script>
 
