@@ -126,6 +126,7 @@
 		<!-- Question 2 Card End -->
 		<br>
         <br>
+
 		<!-- Question 3 Card -->
 		<div class="card mb-1">
 			<div class="card-body">
@@ -158,6 +159,8 @@
 		</div>
 		<!-- Question 3 Card End -->
     
+    <br>
+        <br>
     <!-- Question 4 Card -->
 <!-- <div class="card mb-1">
   <div class="card-body">
@@ -178,12 +181,12 @@
           <input type="checkbox" id="stateGovernment" name="buildingFeatures" value="stateGovernment" class="form-check-input">
           <label for="stateGovernment" class="form-check-label">This building is owned by State Government</label>
       </div>
+      <a href="" target="_blank" class="info-link">Find out more info.</a>
   </div>
 </div> -->
 <!-- Question 4 Card End -->
-
-		<br>
-        <br>
+		<!-- <br>
+        <br> -->
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
 	</div>	
 	
@@ -421,13 +424,17 @@
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
+  // // Retrieve the selected checkboxes for the 4th question
+  // var checkboxes = document.querySelectorAll('input[name="buildingFeatures"]:checked');
+  // var buildingFeatures = Array.from(checkboxes).map(checkbox => checkbox.value);
+
   // Check to see if the user chose a square footage
   if (DD === '') {
     alert("Please select a square footage option.");
     return;
   }
 
-  var combination = DD + '-' + R1 + '-' + R2;
+  var combination = DD + '-' + R1 + '-' + R2 + '_' + buildingFeatures.Join(',');
 
   // Check if the combination contains specific values
   if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {

@@ -157,9 +157,10 @@
 			</div>
 		</div>
 		<!-- Question 3 Card End -->
-    
+    <br>
+        <br>
     <!-- Question 4 Card -->
-<!-- <div class="card mb-1">
+<div class="card mb-1">
   <div class="card-body">
       <h3 class="card-title">Do any of these apply to your building?</h3>
       <div class="form-check">
@@ -179,7 +180,7 @@
           <label for="stateGovernment" class="form-check-label">This building is owned by State Government</label>
       </div>
   </div>
-</div> -->
+</div>
 <!-- Question 4 Card End -->
 
 		<br>
@@ -421,13 +422,17 @@
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
+  // Retrieve the selected checkboxes for the 4th question
+  var checkboxes = document.querySelectorAll('input[name="buildingFeatures"]:checked');
+  var buildingFeatures = Array.from(checkboxes).map(checkbox => checkbox.value);
+
   // Check to see if the user chose a square footage
   if (DD === '') {
     alert("Please select a square footage option.");
     return;
   }
 
-  var combination = DD + '-' + R1 + '-' + R2;
+  var combination = DD + '-' + R1 + '-' + R2 + '_' + buildingFeatures.Join(',');
 
   // Check if the combination contains specific values
   if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {

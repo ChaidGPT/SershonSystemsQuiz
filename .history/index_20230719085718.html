@@ -157,9 +157,10 @@
 			</div>
 		</div>
 		<!-- Question 3 Card End -->
-    
+    <br>
+        <br>
     <!-- Question 4 Card -->
-<!-- <div class="card mb-1">
+<div class="card mb-1">
   <div class="card-body">
       <h3 class="card-title">Do any of these apply to your building?</h3>
       <div class="form-check">
@@ -178,10 +179,10 @@
           <input type="checkbox" id="stateGovernment" name="buildingFeatures" value="stateGovernment" class="form-check-input">
           <label for="stateGovernment" class="form-check-label">This building is owned by State Government</label>
       </div>
+      <a href="" target="_blank" class="info-link">Find out more info.</a>
   </div>
-</div> -->
+</div>
 <!-- Question 4 Card End -->
-
 		<br>
         <br>
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
@@ -421,13 +422,17 @@
   var R1 = document.querySelector('input[name="buildingLocation"]:checked').value;
   var R2 = document.querySelector('input[name="facilityType"]:checked').value;
 
+  // Retrieve the selected checkboxes for the 4th question
+  var checkboxes = document.querySelectorAll('input[name="buildingFeatures"]:checked');
+  var buildingFeatures = Array.from(checkboxes).map(checkbox => checkbox.value);
+
   // Check to see if the user chose a square footage
   if (DD === '') {
     alert("Please select a square footage option.");
     return;
   }
 
-  var combination = DD + '-' + R1 + '-' + R2;
+  var combination = DD + '-' + R1 + '-' + R2 + '_' + buildingFeatures.join(',');
 
   // Check if the combination contains specific values
   if (R1 === 'native' || R2 === 'federal' || R2 === 'industrial' || DD === 'under20k') {
@@ -435,6 +440,35 @@
   } else {
     // Retrieve the message from the message table using the combination key
     var message = messageTable[combination] || 'Default message';
+
+    // Additional message for WA Clean Buildings Performance Standard
+    var waCleanBuildingsMessage = '';
+    if (buildingFeatures.includes('districtEnergy') && !buildingFeatures.includes('stateGovernment')) {
+      waCleanBuildingsMessage += '<p>Buildings connected to district energy systems may use the alternative compliance pathway for district energy decarbonization plans. Plan development must begin by June 30th, 2024, and a final plan must be submitted to the Department of Commerce by June 30, 2025. To learn more, see Sershon Systems’ District Energy Systems blog post.</p>';
+    }
+
+    if (buildingFeatures.includes('districtEnergy') && buildingFeatures.includes('stateGovernment')) {
+      waCleanBuildingsMessage = '<p>State-owned district energy systems must follow the alternative compliance pathway for district energy systems. Plan development must begin by June 30th, 2024, and a final plan must be submitted to the Department of Commerce by June 30, 2025. To learn more, see Sershon Systems’ District Energy Systems blog post.</p>';
+    }
+
+    // Additional message for Seattle Building Emissions Performance Standard
+    var sbepsMessage = '';
+    if (buildingFeatures.includes('campusPortfolio')) {
+      sbepsMessage += '<p>Building owners with a campus or portfolio of buildings may use an aggregate GHGI for compliance. Deadlines for buildings that comply as part of a campus or portfolio GHGI are:</p>' +
+                      '<ul>' +
+                          '<li>Oct 1st, 2028: reporting deadline</li>' +
+                          '<li>Oct 1st, 2033: compliance deadline</li>' +
+                          '<li>Every 5 years, achieving net zero emissions by Oct 1st, 2048</li>' +
+                      '</ul>';
+    }
+
+    if (buildingFeatures.includes('affordableHousing')) {
+      sbepsMessage += '<p>Low-income housing may receive an extension from meeting the GHGIT in the 2031 – 2035 compliance cycle and may qualify for an additional extension.</p>';
+    }
+
+    // Append additional messages based on building features checkboxes
+    message += waCleanBuildingsMessage;
+    message += sbepsMessage;
   }
 
   // Hide the quiz container with fade animation
@@ -454,32 +488,6 @@
     resultContainer.classList.add('show');
   }, 1000); // Adjust the delay (in milliseconds) to match the animation duration
 });
-
-document.querySelector("#goBackBtn").addEventListener("click", function(event) {
-  event.preventDefault();
-
-  // Set the scroll query parameter to true in the URL
-  var url = new URL(window.location.href);
-  url.searchParams.set("scroll", "true");
-  window.location.href = url.toString();
-});
-
-window.onload = function() {
-  // Check if the scroll query parameter is set to true
-  var urlParams = new URLSearchParams(window.location.search);
-  var shouldScroll = urlParams.get("scroll");
-
-  if (shouldScroll === "true") {
-    // Scroll down by 600 pixels with a smooth scrolling animation
-    setTimeout(function() {
-      window.scrollTo({ top: 600, behavior: 'smooth' });
-    }, 0);
-  }
-};
-
-
 </script>
-
 </body>
-
 </html>
