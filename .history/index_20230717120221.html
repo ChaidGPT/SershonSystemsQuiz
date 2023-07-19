@@ -173,17 +173,17 @@
 	<script>
 
     // Info Snippets
-    var fullEXEMPT = '<h3>Exempt</h3> <h4>Based on the answers provided, your facility is not subject to the following regulations:</h4><br>' +
+    var fullEXEMPT = '<h3>Exempt</h3> <b>Based on the answers provided, your facility is not subject to the following regulations:</b><br>' +
                 'Seattle Energy Benchmarking, Seattle Building Tune-Ups, WA Clean Buildings Performance Standard, or Seattle Building Emissions Performance Standard<br>' +
                 'To learn more, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com.<br><br>' +
-                '<h4>Possible Reasons for Exemption:</h4><br>' +
+                '<b>Possible Reasons for Exemption:</b><br>' +
                 '&#8226; Federal ownership<br>' +
                 '&#8226; Industrial facility<br>' +
                 '&#8226; Located within a Native nation<br>' +
                 '&#8226; Facilities less than 20,000 square feet<br><br>' +
-                '<h4>You may be required to apply for exemption and provide supporting documentation.</h4><br>' +
+                '<b>You may be required to apply for exemption and provide supporting documentation.</b><br>' +
                 '• Contact Sershon Systems to discuss specific exemption application deadlines.';
-    var answerBegin = '<h3>Your Compliance Timeline</h3><p>Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p>';
+    var answerBegin = '<h3>Your Compliance Timeline</h3><p>Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p><br><br>';
     var sebOct1st23 = '<h4>Seattle Energy Benchmarking</h4>' +
                       '<ul>' +
                         '<li>Oct 1st, 2023, then annually on June 1st</li>' +
@@ -433,25 +433,14 @@
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Set the scroll query parameter to true in the URL
-  var url = new URL(window.location.href);
-  url.searchParams.set("scroll", "true");
-  window.location.href = url.toString();
+  // Reload the page
+  location.reload();
+
+  // Scroll to the top of the page with a smooth scrolling animation
+  setTimeout(function() {
+    window.scrollTo({ top: 600, behavior: 'smooth' });
+  }, 0); // Delay the scrolling by a short duration (0 milliseconds) to ensure it occurs after the page reloads
 });
-
-window.onload = function() {
-  // Check if the scroll query parameter is set to true
-  var urlParams = new URLSearchParams(window.location.search);
-  var shouldScroll = urlParams.get("scroll");
-
-  if (shouldScroll === "true") {
-    // Scroll down by 600 pixels with a smooth scrolling animation
-    setTimeout(function() {
-      window.scrollTo({ top: 600, behavior: 'smooth' });
-    }, 0);
-  }
-};
-
 
 </script>
 

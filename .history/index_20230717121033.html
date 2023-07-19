@@ -183,7 +183,7 @@
                 '&#8226; Facilities less than 20,000 square feet<br><br>' +
                 '<h4>You may be required to apply for exemption and provide supporting documentation.</h4><br>' +
                 '• Contact Sershon Systems to discuss specific exemption application deadlines.';
-    var answerBegin = '<h3>Your Compliance Timeline</h3><p>Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p>';
+    var answerBegin = '<h3>Your Compliance Timeline</h3><p>Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p><br>';
     var sebOct1st23 = '<h4>Seattle Energy Benchmarking</h4>' +
                       '<ul>' +
                         '<li>Oct 1st, 2023, then annually on June 1st</li>' +
@@ -433,24 +433,23 @@
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Set the scroll query parameter to true in the URL
-  var url = new URL(window.location.href);
-  url.searchParams.set("scroll", "true");
-  window.location.href = url.toString();
+  // Display the quiz container with fade animation
+  var quizContainer = document.getElementById('quizContainer');
+  quizContainer.style.display = 'flex';
+  quizContainer.classList.add('fade');
+
+  // Hide the result container with fade animation
+  var resultContainer = document.getElementById('resultContainer');
+  resultContainer.classList.remove('show');
+  resultContainer.classList.add('fade');
+  setTimeout(function() {
+    resultContainer.style.display = 'none';
+    resultContainer.classList.remove('fade');
+  }, 1000); // Adjust the delay (in milliseconds) to match the animation duration
+
+  // Scroll to the top of the page with a smooth scrolling animation
+  window.scrollTo({ top: 600, behavior: 'smooth' });
 });
-
-window.onload = function() {
-  // Check if the scroll query parameter is set to true
-  var urlParams = new URLSearchParams(window.location.search);
-  var shouldScroll = urlParams.get("scroll");
-
-  if (shouldScroll === "true") {
-    // Scroll down by 600 pixels with a smooth scrolling animation
-    setTimeout(function() {
-      window.scrollTo({ top: 600, behavior: 'smooth' });
-    }, 0);
-  }
-};
 
 
 </script>

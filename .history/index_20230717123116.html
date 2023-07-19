@@ -433,25 +433,15 @@
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Set the scroll query parameter to true in the URL
-  var url = new URL(window.location.href);
-  url.searchParams.set("scroll", "true");
-  window.location.href = url.toString();
-});
+  // Reload the page
+  location.reload();
 
-window.onload = function() {
-  // Check if the scroll query parameter is set to true
-  var urlParams = new URLSearchParams(window.location.search);
-  var shouldScroll = urlParams.get("scroll");
-
-  if (shouldScroll === "true") {
+  // Delay the scrolling by a short duration (e.g., 100 milliseconds) to ensure it occurs after the page reloads
+  setTimeout(function() {
     // Scroll down by 600 pixels with a smooth scrolling animation
-    setTimeout(function() {
-      window.scrollTo({ top: 600, behavior: 'smooth' });
-    }, 0);
-  }
-};
-
+    window.scrollTo({ top: 600, behavior: 'smooth' });
+  }, 100);
+});
 
 </script>
 
