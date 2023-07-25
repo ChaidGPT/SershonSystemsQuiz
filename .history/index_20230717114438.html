@@ -74,18 +74,6 @@
 .card h4 {
   color:grey;
 }
-
-.custom-list {
-  font-size: 1rem;
-  line-height: 1.8rem;
-  font-weight: 300;
-}
-
-.P2 {
-  font-size: 1rem;
-  line-height: 1.8rem;
-  font-weight: 300;
-}
 	</style>
 </head>
 
@@ -169,31 +157,6 @@
 			</div>
 		</div>
 		<!-- Question 3 Card End -->
-    
-    <!-- Question 4 Card -->
-<!-- <div class="card mb-1">
-  <div class="card-body">
-      <h3 class="card-title">Do any of these apply to your building?</h3>
-      <div class="form-check">
-          <input type="checkbox" id="districtEnergy" name="buildingFeatures" value="districtEnergy" class="form-check-input">
-          <label for="districtEnergy" class="form-check-label">This building is connected to a district energy system</label>
-      </div>
-      <div class="form-check">
-          <input type="checkbox" id="campusPortfolio" name="buildingFeatures" value="campusPortfolio" class="form-check-input">
-          <label for="campusPortfolio" class="form-check-label">This building is part of a campus or portfolio</label>
-      </div>
-      <div class="form-check">
-          <input type="checkbox" id="affordableHousing" name="buildingFeatures" value="affordableHousing" class="form-check-input">
-          <label for="affordableHousing" class="form-check-label">This building is affordable housing</label>
-      </div>
-      <div class="form-check">
-          <input type="checkbox" id="stateGovernment" name="buildingFeatures" value="stateGovernment" class="form-check-input">
-          <label for="stateGovernment" class="form-check-label">This building is owned by State Government</label>
-      </div>
-  </div>
-</div> -->
-<!-- Question 4 Card End -->
-
 		<br>
         <br>
 		<button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
@@ -210,124 +173,116 @@
 	<script>
 
     // Info Snippets
-    var fullEXEMPT = '<h3>Exempt</h3> <h4>Based on the answers provided, your facility is not subject to the following regulations:</h4>' +
-                '<p class="P2">Seattle Energy Benchmarking, Seattle Building Tune-Ups, WA Clean Buildings Performance Standard, or Seattle Building Emissions Performance Standard<br>' +
-                'To learn more, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com.</p>' +
-                '<h4>Possible Reasons for Exemption:</h4>' +
-                '<ul class="P2">' +
-                '<li>Federal ownership</li>' +
-                '<li>Industrial facility</li>' +
-                '<li>Located within a Native nation</li>' +
-                '<li>Facilities less than 20,000 square feet</li>' +
-                '</ul>' +
-                '<h4>You may be required to apply for exemption and provide supporting documentation.</h4>' +
-                '<ul class="P2">' +
-                '<li>Contact Sershon Systems to discuss specific exemption application deadlines.</li>' +
-                '</ul>';
-    var answerBegin = '<h3>Your Compliance Timeline</h3><p class="P2">Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p>';
+    var fullEXEMPT = '<h3>Exempt</h3> <b>Based on the answers provided, your facility is not subject to the following regulations:</b><br>' +
+                'Seattle Energy Benchmarking, Seattle Building Tune-Ups, WA Clean Buildings Performance Standard, or Seattle Building Emissions Performance Standard<br>' +
+                'To learn more, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com.<br><br>' +
+                '<b>Possible Reasons for Exemption:</b><br>' +
+                '&#8226; Federal ownership<br>' +
+                '&#8226; Industrial facility<br>' +
+                '&#8226; Located within a Native nation<br>' +
+                '&#8226; Facilities less than 20,000 square feet<br><br>' +
+                '<b>You may be required to apply for exemption and provide supporting documentation.</b><br>' +
+                '• Contact Sershon Systems to discuss specific exemption application deadlines.';
+    var answerBegin = '<h3>Your Compliance Timeline</h3><p>Based on the answers provided, your facility is subject to the legislation and deadlines shown. For more information on compliance, to get started, or to speak with a qualified person, contact Sershon Systems at (206)745-2938 or emily@sershonsystems.com</p><br><br>';
     var sebOct1st23 = '<h4>Seattle Energy Benchmarking</h4>' +
-                      '<ul class="P2">' +
+                      '<ul>' +
                         '<li>Oct 1st, 2023, then annually on June 1st</li>' +
                       '</ul>';
     var setuOct1st23 = '<h4>Seattle Building Tune-Ups</h4>' + 
-                        '<ul class="P2">' +
+                        '<ul>' +
                           '<li>Oct 1st, 2023</li>' +
                         '</ul>';
-    var setuOct1st25 = '<h4>Seattle Building Tune-Ups</h4>' + 
-                        '<ul class="P2">' +
-                          '<li>Oct 1st, 2025</li>' +
-                        '</ul>';
     var cbpsJun1sr23  = '<h4>WA Clean Buildings Performance Standard</h4>' + 
-                          '<ul class="P2">' +
+                          '<ul>' +
                             '<li>June 1st, 2024: last date to start 24-month data collection window</li>' +
                             '<li>June 1st, 2025: energy management plan must be implemented</li>' +
                             '<li>June 1st, 2026 compliance deadline, and every 5 years thereafter</li>' +
                           '</ul>';
-    var cbpsJune1st25 = '<h4>Clean Buildings Performance Standard</h4>' +
-                            '<ul class="P2">' +
-                              '<li>June 1st, 2025: last date to start 24-month data collection window</li>' +
-                              '<li>June 1st, 2026: energy management plan must be implemented</li>' +
-                              '<li>June 1st, 2027 compliance deadline, and every 5 years thereafter</li>' +
-                            '</ul>';
     var sbepsOct1st24 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                          '<ul class="P2">' +
+                          '<ul>' +
                             '<li>Oct 1st, 2027: reporting deadline</li>' +
                             '<li>Oct 1st, 2031: compliance deadline</li>' +
                             '<li>Every 5 years, achieving net zero emissions Oct 1st, 2041</li>' +
                           '</ul>';
-    var sbepsOct1st27 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                              '<ul class="P2">' +
+    var cbpsJune1st25 = '<b>Clean Buildings Performance Standard</b>' +
+                            '<ul>' +
+                              '<li>June 1st, 2025: last date to start 24-month data collection window</li>' +
+                              '<li>June 1st, 2026: energy management plan must be implemented</li>' +
+                              '<li>June 1st, 2027 compliance deadline, and every 5 years thereafter</li>' +
+                            '</ul>';
+    var sbepsOct1st27 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                              '<ul>' +
                                 '<li>Oct 1st, 2027: reporting deadline</li>' +
                                 '<li>Oct 1st, 2032: compliance deadline</li>' +
                                 '<li>Every 5 years, achieving net zero emissions Oct 1st, 2042</li>' +
                               '</ul>';
-    var sbtuOct1st24 = '<h4>Seattle Building Tune-Ups</h4>' +
-                        '<ul class="P2">' +
+    var sbtuOct1st24 = '<b>Seattle Building Tune-Ups</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2024</li>' +
                         '</ul>';
-    var sbtuOct1st25 = '<h4>Seattle Building Tune-Ups</h4>' +
-                        '<ul class="P2">' +
+    var sbtuOct1st25 = '<b>Seattle Building Tune-Ups</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2025</li>' +
                         '</ul>';
-    var cbpsJune1st26 = '<h4>WA Clean Buildings Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var cbpsJune1st26 = '<b>WA Clean Buildings Performance Standard</b>' +
+                        '<ul>' +
                           '<li>June 1st, 2026: last date to start 24-month data collection window</li>' +
                           '<li>June 1st, 2027: energy management plan must be implemented</li>' +
                           '<li>June 1st, 2028 compliance deadline, and every 5 years thereafter</li>' +
                         '</ul>';
-    var cbpsJuly1st26 = '<h4>WA Clean Buildings Performance Standard</h4>' +
-                        '<ul class="P2">' +
-                          '<li>July 1st, 2026 energy management plan must be implemented</li>' +
-                          '<li>July 1st, 2027 reporting only, then compliance on 5-year cycle</li>' +
-                        '</ul>';
-    var cbpsJune1st2527 = '<h4>WA Clean Buildings Performance Standard</h4>' +
-                        '<ul class="P2">' +
-                          '<li>June 1st, 2025: last date to start 24-month data collection window' +
-                          '<li>June 1st, 2026: energy management plan must be implemented</li>' +
-                          '<li>June 1st, 2027: compliance deadline, and every 5 years thereafter</li>' +
-                        '</ul>';
-    var sbepsOct1st28 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st28 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2028: reporting deadline</li>' +
                           '<li>Oct 1st, 2033: compliance deadline</li>' +
                           '<li>Every 5 years, achieving net zero emissions Oct 1st, 2043</li>' +
                         '</ul>';
-    var sbtuOct1st26 = '<h4>Seattle Building Tune-Ups</h4>' +
-                        '<ul class="P2">' +
+    var sbtuOct1st26 = '<b>Seattle Building Tune-Ups</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2026</li>' +
                         '</ul>';
-    var sbepsOct1st29 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var cbpsJuly1st26 = '<b>WA Clean Buildings Performance Standard</b>' +
+                        '<ul>' +
+                          '<li>July 1st, 2026 energy management plan must be implemented</li>' +
+                          '<li>July 1st, 2027 reporting only, then compliance on 5-year cycle</li>' +
+                        '</ul>';
+    var sbepsOct1st29 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2029: reporting deadline</li>' +
                           '<li>Oct 1st, 2034: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2044</li>' +
                         '</ul>';
-    var sbepsOct1st30 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st30 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2030: reporting deadline</li>' +
                           '<li>Oct 1st, 2035: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2045</li>' +
                         '</ul>';
-    var sbepsOct1st2731 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st2731 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2027: reporting deadline</li>' +
                           '<li>Oct 1st, 2031: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2046</li>' +
                         '</ul>';
-    var sbepsOct1st2833 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st2833 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2028: reporting deadline' +
                           '<li>Oct 1st, 2033: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2048</li>' +
                         '</ul>';
-    var sbepsOct1st2949 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st2949 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2029: reporting deadline' +
                           '<li>Oct 1st, 2034: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2049</li>' +
                         '</ul>';
-    var sbepsOct1st20 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var sbepsOct1st20 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2020: reporting deadline' +
                           '<li>Oct 1st, 2035: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2050</li>' +
                         '</ul>';
-    var sbepsOct1st2732 = '<h4>Seattle Building Emissions Performance Standard</h4>' +
-                        '<ul class="P2">' +
+    var cbpsJune1st2527 = '<b>WA Clean Buildings Performance Standard</b>' +
+                        '<ul>' +
+                          '<li>June 1st, 2025: last date to start 24-month data collection window' +
+                          '<li>June 1st, 2026: energy management plan must be implemented</li>' +
+                          '<li>June 1st, 2027: compliance deadline, and every 5 years thereafter</li>' +
+                        '</ul>';
+    var sbepsOct1st2732 = '<b>Seattle Building Emissions Performance Standard</b>' +
+                        '<ul>' +
                           '<li>Oct 1st, 2027: reporting deadline</li>' +
                           '<li>Oct 1st, 2032: compliance deadline Every 5 years, achieving net zero emissions Oct 1st, 2047</li>' +
                         '</ul>';   
@@ -342,13 +297,13 @@
       '200kTo220k-seattle-commercial': 'Answer 2<br>' + answerBegin + sebOct1st23 + setuOct1st23 + cbpsJune1st25 + sbepsOct1st27,
 
       // Answer 3
-      '100kTo200k-seattle-commercial': 'Answer 3<br>' + answerBegin + sebOct1st23 + sbtuOct1st24 + cbpsJune1st25 + sbepsOct1st27,
+      '100kTo200k-seattle-commercial': 'Answer 3<br>' + answerBegin + sebOct1st23 + cbpsJune1st25 + sbtuOct1st24 + sbepsOct1st27,
 
       // Answer 4
-      '90kTo100k-seattle-commercial': 'Answer 4<br>' + answerBegin + sebOct1st23 + setuOct1st25 + cbpsJune1st25 + sbepsOct1st27,
+      '90kTo100k-seattle-commercial': 'Answer 4<br>' + answerBegin + sebOct1st23 + cbpsJune1st25 + sbepsOct1st27,
 
       // Answer 5
-      '70kTo90k-seattle-commercial': 'Answer 5<br>' + answerBegin + sebOct1st23 + sbtuOct1st25 + cbpsJune1st26 + sbepsOct1st28,
+      '70kTo90k-seattle-commercial': 'Answer 5<br>' + answerBegin + sbtuOct1st25 + cbpsJune1st26 + sbepsOct1st28,
 
       // Answer 6
       '50kTo70k-seattle-commercial': 'Answer 6<br>' + answerBegin + sebOct1st23 + cbpsJune1st26 + sbepsOct1st28 + sbtuOct1st26,
@@ -474,24 +429,12 @@
 document.querySelector("#goBackBtn").addEventListener("click", function(event) {
   event.preventDefault();
 
-  // Set the scroll query parameter to true in the URL
-  var url = new URL(window.location.href);
-  url.searchParams.set("scroll", "true");
-  window.location.href = url.toString();
+  // Refresh the page
+  location.reload();
 });
 
-window.onload = function() {
-  // Check if the scroll query parameter is set to true
-  var urlParams = new URLSearchParams(window.location.search);
-  var shouldScroll = urlParams.get("scroll");
-
-  if (shouldScroll === "true") {
-    // Scroll down by 600 pixels with a smooth scrolling animation
-    setTimeout(function() {
-      window.scrollTo({ top: 600, behavior: 'smooth' });
-    }, 0);
-  }
-};
 </script>
+
 </body>
+
 </html>
